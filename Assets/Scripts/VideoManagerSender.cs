@@ -35,9 +35,11 @@ public class VideoManagerSender : MonoBehaviour
         {
             // send numbers from 10 to 1 by UDP
             udpSend1.sendString(i.ToString());
-            return yield new WaitForSeconds(0.01);
+            yield return new WaitForSeconds(0.01F);
         }
         player.Play();
+
+        //yield WaitForSeconds(0);
     }
     
 }

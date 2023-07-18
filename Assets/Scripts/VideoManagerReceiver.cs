@@ -23,7 +23,7 @@ public class VideoManagerReceiver : MonoBehaviour
     {
         string data = udpReceiver.GetLastestData();
         int value;
-        if (int.TryParse(data, value))
+        if (int.TryParse(data, out value))
         {
             StartCoroutine(PlayCoroutine(value));
         }
@@ -31,7 +31,7 @@ public class VideoManagerReceiver : MonoBehaviour
     
     IEnumerator PlayCoroutine(int wait)
     {
-        yield return new WaitForSeconds(wait * 0.01);
+        yield return new WaitForSeconds(wait * 0.01F);
         player.Play();
     }
 }
