@@ -10,7 +10,7 @@ public class VideoManagerSender : MonoBehaviour
 
     void Start()
     {
-        player= GetComponent<VideoPlayer>();
+        player = GetComponent<VideoPlayer>();
     }
 
     // Update is called once per frame
@@ -24,6 +24,7 @@ public class VideoManagerSender : MonoBehaviour
         
         if (player.isPlaying == false)
         {
+            //player.Play();
             StartCoroutine(PlayCoroutine());
         }
         
