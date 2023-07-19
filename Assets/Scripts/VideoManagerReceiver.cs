@@ -33,6 +33,7 @@ public class VideoManagerReceiver : MonoBehaviour
     IEnumerator PlayCoroutine(int wait)
     {
         yield return new WaitForSeconds(wait * 0.01F);
+        udpReceiver.GetLastestData(); // clear the buffer
         player.Play();
     }
 }
