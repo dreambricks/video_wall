@@ -11,6 +11,7 @@ public class VideoManagerSender : MonoBehaviour
     void Start()
     {
         player = GetComponent<VideoPlayer>();
+        player.url = "C:\\Users\\julio\\Documents\\DB\\Unity\\video_wall\\Assets\\Video\\dgo.mp4";
     }
 
     // Update is called once per frame
@@ -38,6 +39,7 @@ public class VideoManagerSender : MonoBehaviour
             udpSend1.sendString(i.ToString());
             yield return new WaitForSeconds(0.01F);
         }
+        print("Passou aqui");
         player.Play();
 
         //yield WaitForSeconds(0);
