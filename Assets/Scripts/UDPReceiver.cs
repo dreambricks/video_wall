@@ -18,6 +18,7 @@ public class UDPReceiver : MonoBehaviour
     public bool printToConsole = false;
     public string data;
     public static LockFreeQueue<string> myQueue;
+    // public time timeLastDataReceived;
 
     public void Start()
     {
@@ -40,6 +41,7 @@ public class UDPReceiver : MonoBehaviour
                 byte[] dataByte = client.Receive(ref anyIP);
                 data = Encoding.UTF8.GetString(dataByte);
                 myQueue.Enqueue(data);
+                // timeLastDataReceived = getCurrentTime();
 
                 if (printToConsole) { print(data); }
             }
@@ -71,4 +73,14 @@ public class UDPReceiver : MonoBehaviour
 
         return result;
     }
+
+    // returns the last item in the queue
+    // if it is newer than maxAge seconds
+    //public string GetLastestNewData(time maxAge) 
+    //{
+    //    if (GetCurrentTime() - timeLastDataReceived > maxAge)
+    //        return "";
+    //
+    //    return GetLastestData();
+    //}
 }
