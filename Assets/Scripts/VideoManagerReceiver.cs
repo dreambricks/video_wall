@@ -23,6 +23,7 @@ public class VideoManagerReceiver : MonoBehaviour
     void PlayVideo()
     {
         string data = udpReceiver.GetLastestData();
+        //string data = udpReceiver.GetLastestNewData(1.0f);// don't get data that is older than 1 second
         int value;
         if (int.TryParse(data, out value))
         {
