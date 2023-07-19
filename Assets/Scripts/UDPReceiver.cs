@@ -76,11 +76,11 @@ public class UDPReceiver : MonoBehaviour
 
     // returns the last item in the queue
     // if it is newer than maxAge seconds
-    //public string GetLastestNewData(time maxAge) 
-    //{
+    public string GetLastestNewData(float maxAge) 
+    {
     //    if (GetCurrentTime() - timeLastDataReceived > maxAge)
     //        return "";
     //
-    //    return GetLastestData();
-    //}
+        return GetLastestData();
+    }
 }
