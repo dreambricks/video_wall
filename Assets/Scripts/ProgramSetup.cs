@@ -7,6 +7,8 @@ public class ProgramSetup : MonoBehaviour
 {
 
     public DisplaySetup displaySetup;
+    public GameObject quad;
+    public SetupUI setupUI;
 
     public InputField port;
     public InputField broadCastAddress;
@@ -43,22 +45,12 @@ public class ProgramSetup : MonoBehaviour
 
         SaveToJsonFile(displaySetup, "display_data.json");
 
+        
+        quad.gameObject.SetActive(true);
 
-
+        setupUI.gameObject.SetActive(false);
     }
 
-    //private void SaveToJsonFile(DisplaySetup data, string fileName)
-    //{
-    //    Debug.Log(data.VideoSettings.Filename);
-    //    string jsonData = JsonUtility.ToJson(data); // Converte o objeto para uma string JSON
-
-    //    // Define o caminho do arquivo onde queremos salvar
-    //    string path = Path.Combine(Application.persistentDataPath, fileName);
-
-    //    // Salva o arquivo em disco
-    //    File.WriteAllText(path, jsonData);
-    //    Debug.Log("Objeto salvo como JSON em: " + path);
-    //}
 
     private void SaveToJsonFile<T>(T data, string fileName)
     {
