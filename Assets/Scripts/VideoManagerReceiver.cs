@@ -22,7 +22,8 @@ public class VideoManagerReceiver : MonoBehaviour
 
     void PlayVideo()
     {
-        string data = udpReceiver.GetLastestData();
+        //string data = udpReceiver.GetLastestData();
+        string data = udpReceiver.GetLastestNewData(1.0f);// don't get data that is older than 1 second
         int value;
         if (int.TryParse(data, out value))
         {
@@ -33,6 +34,7 @@ public class VideoManagerReceiver : MonoBehaviour
     IEnumerator PlayCoroutine(int wait)
     {
         yield return new WaitForSeconds(wait * 0.01F);
+        udpReceiver.GetLastestData(); // clear the buffer
         player.Play();
     }
 }
