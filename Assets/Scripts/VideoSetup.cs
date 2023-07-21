@@ -37,7 +37,7 @@ public class VideoSetup : MonoBehaviour
     private T LoadFromJsonFile<T>(string fileName)
     {
         // Define o caminho do arquivo onde queremos carregar
-        string path = Path.Combine(Application.persistentDataPath, fileName);
+        string path = Path.Combine(Application.streamingAssetsPath, fileName);
 
         if (File.Exists(path))
         {

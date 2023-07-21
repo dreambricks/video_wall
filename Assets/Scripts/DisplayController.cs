@@ -6,10 +6,15 @@ using UnityEngine;
 
 public class DisplayController : MonoBehaviour
 {
+    public Vector2 newPivot = new Vector2(0.5f, 0.5f);
+
     // Start is called before the first frame update
     void Start()
     {
+        RectTransform rectTransform = GetComponent<RectTransform>();
         
+        rectTransform.pivot = newPivot;
+
     }
 
     // Update is called once per frame

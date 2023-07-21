@@ -17,8 +17,8 @@ public class SetupUI : MonoBehaviour
     public InputField masterExtraDelay;
 
     public InputField fileName;
-    public InputField positionX;
-    public InputField positionY;
+    public Dropdown position;
+
     public InputField videoSizeW;
     public InputField videoSizeH;
 
@@ -27,22 +27,31 @@ public class SetupUI : MonoBehaviour
     private void OnEnable()
     {
         DisplaySetup loadedData = LoadFromJsonFile<DisplaySetup>("display_data.json");
+        if (loadedData != null)
+        {
+            GetDataFromJson();
+        }
+    }
+
+    // Update is called once per frame 
+    void Update()
+    {
+        
+    }
+
+    private void GetDataFromJson()
+    {
+        DisplaySetup loadedData = LoadFromJsonFile<DisplaySetup>("display_data.json");
         port.text = loadedData.NetworkDisplay.Port;
         broadCastAddress.text = loadedData.NetworkDisplay.BroadCastAddress;
         SetDropdownValueByName(masterOrSlave, loadedData.NetworkDisplay.MasterOrSlave);
         masterExtraDelay.text = loadedData.NetworkDisplay.MasterExtraDelay;
 
         fileName.text = loadedData.VideoSettings.Filename;
-        positionX.text = loadedData.VideoSettings.Position[0];
-        positionY.text = loadedData.VideoSettings.Position[1];
+        SetDropdownValueByName(position, loadedData.VideoSettings.Position);
+
         videoSizeW.text = loadedData.VideoSettings.VideoSize[0];
         videoSizeH.text = loadedData.VideoSettings.VideoSize[1];
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private T LoadFromJsonFile<T>(string fileName)

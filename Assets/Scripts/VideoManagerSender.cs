@@ -39,7 +39,7 @@ public class VideoManagerSender : MonoBehaviour
             udpSend1.sendString(i.ToString());
             yield return new WaitForSeconds(0.01F);
         }
-        print("Passou aqui");
+        
         player.Play();
 
         //yield WaitForSeconds(0);

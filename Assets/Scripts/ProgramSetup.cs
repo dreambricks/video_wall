@@ -7,7 +7,7 @@ public class ProgramSetup : MonoBehaviour
 {
 
     public DisplaySetup displaySetup;
-    public GameObject quad;
+    public GameObject player;
     public SetupUI setupUI;
 
     public InputField port;
@@ -16,8 +16,7 @@ public class ProgramSetup : MonoBehaviour
     public InputField masterExtraDelay;
 
     public InputField fileName;
-    public InputField positionX;
-    public InputField positionY;
+    public Dropdown position;
     public InputField videoSizeW;
     public InputField videoSizeH;
 
@@ -35,9 +34,8 @@ public class ProgramSetup : MonoBehaviour
         displaySetup.NetworkDisplay= networkDisplay;
 
         videoSettings.Filename= fileName.text;
-        videoSettings.Position = new string[2];
-        videoSettings.Position[0] = positionX.text;
-        videoSettings.Position[1] = positionY.text;
+        int positionIndex = position.value;
+        videoSettings.Position = position.options[positionIndex].text;
         videoSettings.VideoSize = new string[2];
         videoSettings.VideoSize[0] = videoSizeW.text;
         videoSettings.VideoSize[1] = videoSizeH.text;
@@ -45,8 +43,8 @@ public class ProgramSetup : MonoBehaviour
 
         SaveToJsonFile(displaySetup, "display_data.json");
 
-        
-        quad.gameObject.SetActive(true);
+
+        player.gameObject.SetActive(true);  
 
         setupUI.gameObject.SetActive(false);
     }

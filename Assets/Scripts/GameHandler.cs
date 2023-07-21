@@ -3,19 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class GameHandler : MonoBehaviour
 {
 
     private DisplaySetup displaySetup;
     public SetupUI setupUI;
-    public GameObject quad;
+    public VideoPlayer player;
+    
 
     private bool ativo = false;
     void Awake()
     {
-        quad.SetActive(false);
+
         setupUI.gameObject.SetActive(false);
+        player.gameObject.SetActive(false);
 
         DisplaySetup loadedData = LoadFromJsonFile<DisplaySetup>("display_data.json");
         Debug.Log(loadedData);
@@ -25,7 +28,7 @@ public class GameHandler : MonoBehaviour
         }
         else
         {
-            quad.SetActive(true);
+            player.gameObject.SetActive(true);
         }
 
     }
