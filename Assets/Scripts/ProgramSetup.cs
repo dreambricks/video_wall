@@ -57,7 +57,7 @@ public class ProgramSetup : MonoBehaviour
         string jsonData = JsonConvert.SerializeObject(data); // Converte o objeto para uma string JSON
 
         // Define o caminho do arquivo onde queremos salvar
-        string path = Path.Combine(Application.persistentDataPath, fileName);
+        string path = Path.Combine(Application.streamingAssetsPath, fileName);
 
         // Salva o arquivo em disco
         File.WriteAllText(path, jsonData);
