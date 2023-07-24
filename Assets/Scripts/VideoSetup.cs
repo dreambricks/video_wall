@@ -3,15 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class VideoSetup : MonoBehaviour
 {
+    private VideoPlayer player;
+
     private VideoManagerSender videoManagerSender;
     private VideoManagerReceiver videoManagerReceiver;
     private DisplaySetup displaySetup;
 
     public UDPReceiver udpReceiver;
     public UDPSend udpSend;
+
+    private void Start()
+    {
+        player = GetComponent<VideoPlayer>();
+        player.url = "C:\\Users\\julio\\Documents\\DB\\Unity\\video_wall\\Assets\\Video\\dgo.mp4";
+        //DisplaySetup loadedData = SaveManager.LoadFromJsonFile<DisplaySetup>("display_data.json");
+        //player.url = loadedData.VideoSettings.Filename;
+    }
 
     void Awake()
     {

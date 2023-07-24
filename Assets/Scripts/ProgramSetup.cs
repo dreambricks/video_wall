@@ -16,9 +16,12 @@ public class ProgramSetup : MonoBehaviour
     public InputField masterExtraDelay;
 
     public InputField fileName;
+    public InputField displayQuantity;
     public Dropdown position;
     public InputField videoSizeW;
     public InputField videoSizeH;
+    public InputField pivotX;
+    public InputField pivotY;
 
     public void SaveSettings()
     {
@@ -34,11 +37,15 @@ public class ProgramSetup : MonoBehaviour
         displaySetup.NetworkDisplay= networkDisplay;
 
         videoSettings.Filename= fileName.text;
+        videoSettings.DisplayQuantity = displayQuantity.text;
         int positionIndex = position.value;
         videoSettings.Position = position.options[positionIndex].text;
         videoSettings.VideoSize = new string[2];
         videoSettings.VideoSize[0] = videoSizeW.text;
         videoSettings.VideoSize[1] = videoSizeH.text;
+        videoSettings.Pivot = new string[2];
+        videoSettings.Pivot[0] = pivotX.text;
+        videoSettings.Pivot[1] = pivotY.text;
         displaySetup.VideoSettings= videoSettings;
 
         SaveToJsonFile(displaySetup, "display_data.json");

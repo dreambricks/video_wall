@@ -11,7 +11,6 @@ public class VideoManagerReceiver : MonoBehaviour
     void Start()
     {
         player= GetComponent<VideoPlayer>();
-        player.url = "C:\\Users\\julio\\Documents\\DB\\Unity\\video_wall\\Assets\\Video\\dgo.mp4";
     }
 
     // Update is called once per frame

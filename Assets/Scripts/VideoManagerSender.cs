@@ -7,11 +7,11 @@ public class VideoManagerSender : MonoBehaviour
 {
     private VideoPlayer player;
     public UDPSend udpSend1;
+    private float masterDelay;
 
     void Start()
     {
         player = GetComponent<VideoPlayer>();
-        player.url = "C:\\Users\\julio\\Documents\\DB\\Unity\\video_wall\\Assets\\Video\\dgo.mp4";
     }
 
     // Update is called once per frame
@@ -39,10 +39,12 @@ public class VideoManagerSender : MonoBehaviour
             udpSend1.sendString(i.ToString());
             yield return new WaitForSeconds(0.01F);
         }
-        
+
+        yield return new WaitForSeconds(masterDelay);
+
         player.Play();
 
         //yield WaitForSeconds(0);
     }
-    
+        
 }

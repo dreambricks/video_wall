@@ -21,10 +21,13 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using Newtonsoft.Json;
+using System.IO;
 
 public class UDPSend : MonoBehaviour
 {
     private static int localPort;
+    private DisplaySetup displaySetup;
 
     // prefs
     public string IP;  // define in init
@@ -57,32 +60,18 @@ public class UDPSend : MonoBehaviour
         init();
     }
 
-    // OnGUI
-    //void OnGUI()
-    //{
-    //    Rect rectObj = new Rect(40, 380, 200, 400);
-    //    GUIStyle style = new GUIStyle();
-    //    style.alignment = TextAnchor.UpperLeft;
-    //    GUI.Box(rectObj, "# UDPSend-Data\n127.0.0.1 " + port + " #\n"
-    //                + "shell> nc -lu 127.0.0.1  " + port + " \n"
-    //            , style);
-
-    //    // ------------------------
-    //    // send it
-    //    // ------------------------
-    //    strMessage = GUI.TextField(new Rect(40, 420, 140, 20), strMessage);
-    //    if (GUI.Button(new Rect(190, 420, 40, 20), "send"))
-    //    {
-    //        sendString(strMessage + "\n");
-    //    }
-    //}
 
     // init
     public void init()
     {
         // Endpunkt definieren, von dem die Nachrichten gesendet werden.
         print("UDPSend.init()");
-
+        DisplaySetup loadedData = SaveManager.LoadFromJsonFile<DisplaySetup>("display_data.json");
+        if (loadedData != null)
+        {
+            IP = loadedData.NetworkDisplay.BroadCastAddress;
+            port = int.Parse(loadedData.NetworkDisplay.Port);
+        }
 
         // ----------------------------
         // Senden
@@ -159,5 +148,7 @@ public class UDPSend : MonoBehaviour
         while (true);
 
     }
+
+
 
 }

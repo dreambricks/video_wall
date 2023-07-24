@@ -1,1 +1,1 @@
-{"NetworkDisplay":{"Port":"88","BroadCastAddress":"88","MasterOrSlave":"Master","MasterExtraDelay":"88"},"VideoSettings":{"Filename":"88","Position":"2","VideoSize":["88","88"]}}
+{"NetworkDisplay":{"Port":"5052","BroadCastAddress":"192.168.15.255","MasterOrSlave":"Master","MasterExtraDelay":"2"},"VideoSettings":{"Filename":"c","Position":"5","VideoSize":["521551","633"],"Pivot":["515,51","02,5"],"DisplayQuantity":"4"}}

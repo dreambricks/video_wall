@@ -16,11 +16,13 @@ public class SetupUI : MonoBehaviour
     public Dropdown masterOrSlave;
     public InputField masterExtraDelay;
 
-    public InputField fileName;
+ public InputField fileName;
+    public InputField displayQuantity;
     public Dropdown position;
-
     public InputField videoSizeW;
     public InputField videoSizeH;
+    public InputField pivotX;
+    public InputField pivotY;
 
 
     // Start is called before the first frame update
@@ -48,10 +50,14 @@ public class SetupUI : MonoBehaviour
         masterExtraDelay.text = loadedData.NetworkDisplay.MasterExtraDelay;
 
         fileName.text = loadedData.VideoSettings.Filename;
+        displayQuantity.text = loadedData.VideoSettings.DisplayQuantity;
         SetDropdownValueByName(position, loadedData.VideoSettings.Position);
 
         videoSizeW.text = loadedData.VideoSettings.VideoSize[0];
         videoSizeH.text = loadedData.VideoSettings.VideoSize[1];
+
+        pivotX.text = loadedData.VideoSettings.Pivot[0];
+        pivotY.text = loadedData.VideoSettings.Pivot[1];
     }
 
     private T LoadFromJsonFile<T>(string fileName)
