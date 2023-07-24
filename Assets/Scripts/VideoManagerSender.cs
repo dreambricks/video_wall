@@ -8,10 +8,14 @@ public class VideoManagerSender : MonoBehaviour
     private VideoPlayer player;
     public UDPSend udpSend1;
     private float masterDelay;
+   
 
     void Start()
     {
         player = GetComponent<VideoPlayer>();
+        DisplaySetup loadedData = SaveManager.LoadFromJsonFile<DisplaySetup>("display_data.json");
+        masterDelay = float.Parse(loadedData.NetworkDisplay.MasterExtraDelay);
+
     }
 
     // Update is called once per frame
@@ -39,9 +43,10 @@ public class VideoManagerSender : MonoBehaviour
             udpSend1.sendString(i.ToString());
             yield return new WaitForSeconds(0.01F);
         }
-
-        yield return new WaitForSeconds(masterDelay);
-
+        // recommended 15ms to 30 ms
+        float delay = masterDelay;
+        yield return new WaitForSeconds(delay);
+        Debug.Log(delay + " passou aqui");
         player.Play();
 
         //yield WaitForSeconds(0);
